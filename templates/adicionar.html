@@ -1,0 +1,85 @@
+<!doctype html>
+
+<html lang="pt-br">
+
+  <head>
+    <meta charset="utf-8">
+    <title>Cadastro de Cliente</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  </head>
+
+  <body class="bg-light">
+
+<!--CABEÇALHO -->
+    <div class="py-3 text-center">
+        <img src="static/images/flask.jpeg" class="rounded" width="100" height="90">
+    </div>
+    <div class="container">
+        <div class="py-2 text-center">
+          <h3>Cadastre seus Dados</h3>
+          <p class="lead">Preencha este breve formulário para se cadastrar no nosso banco de dados.</p>
+        </div>
+
+
+<!--NOME -->
+        <div class="col-12">
+            <strong><label for="firstName" class="form-label">Nome Completo</label></strong>
+            <input type="text" class="form-control" id="firstName" placeholder="Nome Completo">
+        </div>
+
+<!--TELEFONE CELULAR -->
+        <div class="col-12">
+            <strong><label for="Telefone Celular" class="form-label"> Telefone Celular </label></strong>
+          <input type="text" class="form-control" id="Telefone Celular" placeholder="Celular">
+        </div>
+
+<!--TELEFONE FIXO -->
+        <div class="col-12">
+          <strong><label for="Telefone Residencial" class="form-label">Telefone Residencial <span class="text-muted">(Opcional)</span></label></strong>
+          <input type="text" class="form-control" id="Telefone Residencial" placeholder="Telefone Residencial">
+          <div class="invalid-feedback">
+            Please enter a valid email address for shipping updates.
+          </div>
+        </div>
+
+<!--DATA DE NASCIMENTO -->
+      <div class="col-12">
+        <strong><label for="Data de Nascimento" class="form-label">Data de Nascimento</label></strong>
+        <input type="text" class="form-control" id="Data de Nascimento" placeholder="dd/mm/aaaa" required>
+        <div class="invalid-feedback">
+          Please enter your shipping address.
+        </div>
+      </div>
+
+<!--EMAIL -->
+        <div class="col-12">
+          <strong><label for="email" class="form-label">E-mail</label></strong>
+          <input type="email" class="form-control" id="email" placeholder="you@example.com">
+          <div class="invalid-feedback">
+            Please enter a valid email address for shipping updates.
+          </div>
+        </div>
+
+<!--ENDEREÇO -->
+        <div class="col-12">
+          <strong><label for="address" class="form-label">Endereço</label></strong>
+          <input type="text" class="form-control" id="address" placeholder="Avenida/Rua 1234" required>
+        </div>
+
+<!--BOTÃO -->
+        <hr class="my-4">
+        <a href="{{url_for('home')}}"><input type="button" class="w-100 btn btn-primary btn-lg" value="Finalizar Cadastro"></a>
+    </div>
+
+    <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="form-validation.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+  </body>
+      <footer class="fixed-bottom text-center text-small">
+        <p class="mb-1">&copy; Desenvolvedor Back-end</p>
+      </footer>
+</html>
