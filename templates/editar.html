@@ -1,61 +1,47 @@
-<!doctype html>
+{% extends 'base.html' %}
 
-<html lang="pt-br">
-
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-
+{% block title %}
     <title>Alteração de Cadastro</title>
+{% endblock %}
+
 
 <!--CABEÇALHO -->
-
-    <div class="container">
-        <div class="py-3 text-center">
-            <img src="static/images/flask.jpeg" class="rounded" width="100" height="90">
-        </div>
-        <div class="py-2 text-center">
-            <h3>Altere seus Dados</h3>
-            <p class="lead">Preencha este breve formulário para se cadastrar no nosso banco de dados.</p>
-        </div>
+{% block head %}
+<div class="container">
+    <div class="py-2 text-center">
+        <h3>Altere seus Dados</h3>
+        <p class="lead">Preencha este breve formulário para se cadastrar no nosso banco de dados.</p>
     </div>
-  </head>
+</div>
+{% endblock %}
 
-  <body>
-    <!--NOME -->
-    <div class="container">
-       <form class="form-group" action="/editar/{{ pessoa.id }}" method="POST">
-            <div class="py-2 col-12">
-                <strong><label>Nome Completo</label></strong>
-                <input type="text" name='nome' class="form-control" placeholder="Nome Completo" value="{{ pessoa.nome }}">
-            </div>
-    <!--TELEFONE -->
-            <div class="py-2 col-12">
-                <strong><label>Telefone</label></strong>
-                <input type="number" name='telefone' class="form-control" placeholder="Telefone" value="{{ pessoa.telefone }}">
-            </div>
-    <!--EMAIL -->
-            <div class="py-2 col-12">
-                <strong><label>E-mail</label></strong>
-                <input type="email" name='email' class="form-control" placeholder="E-mail" value="{{ pessoa.email }}">
-            </div>
-    <!--ENDEREÇO -->
-            <div class="py-2 col-12">
-                <strong><label>Endereço</label></strong>
-                <input type="text" name='endereco' class="form-control" placeholder="Endereço" value="{{ pessoa.endereco }}">
-            </div>
-    <!--BOTÃO -->
-            <div class="py-4 col-12">
-                <button class="btn btn-primary btn-lg" type="submit">Alterar Cadastro</button>
-            </div>
-        </form>
-
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
-    </div>
-  </body>
-
-      <footer class="fixed-bottom text-center text-small">
-        <p class="mb-1">&copy; Desenvolvedor Back-end</p>
-      </footer>
-</html>
+{% block body %}
+<!--NOME -->
+<div class="container">
+   <form class="form-group" action="/editar/{{ pessoa.id }}" method="POST">
+        <div class="py-2 col-12">
+            <strong><label>Nome Completo</label></strong>
+            <input type="text" name='nome' class="form-control" placeholder="Nome Completo" value="{{ pessoa.nome }}">
+        </div>
+<!--TELEFONE -->
+        <div class="py-2 col-12">
+            <strong><label>Telefone</label></strong>
+            <input type="number" name='telefone' class="form-control" placeholder="Telefone" value="{{ pessoa.telefone }}">
+        </div>
+<!--EMAIL -->
+        <div class="py-2 col-12">
+            <strong><label>E-mail</label></strong>
+            <input type="email" name='email' class="form-control" placeholder="E-mail" value="{{ pessoa.email }}">
+        </div>
+<!--ENDEREÇO -->
+        <div class="py-2 col-12">
+            <strong><label>Endereço</label></strong>
+            <input type="text" name='endereco' class="form-control" placeholder="Endereço" value="{{ pessoa.endereco }}">
+        </div>
+<!--BOTÃO -->
+        <div class="py-4 col-12">
+            <button class="btn btn-primary btn-lg" type="submit">Alterar Cadastro</button>
+        </div>
+   </form>
+</div>
+{% endblock %}

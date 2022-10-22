@@ -5,6 +5,7 @@ from flask_migrate import Migrate
 
 app = Flask(__name__, template_folder='templates')
 
+
 # adding configuration for using a sqlite database
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///pessoa.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
