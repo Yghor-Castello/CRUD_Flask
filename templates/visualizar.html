@@ -6,13 +6,10 @@
 
     <meta charset="utf-8">
     <title>Cadastro de Cliente</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css"
-          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-  </head>
-
-  <body>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 
   <!--CABEÇALHO -->
+
     <div class="py-3 text-center">
         <img src="static/images/flask.jpeg" class="rounded" width="100" height="90">
     </div>
@@ -23,25 +20,27 @@
         </div>
     </div>
 
+
+  </head>
+
+  <body>
+
   <!-- VISUALIZANDO BANCO DE DADOS -->
         <hr>
         {% for pessoa in pessoa %}
-        <div class="segment">
-            <p class="big header">Nome: {{ pessoa.nome }}</p>
-            <p class="big header">CPF: {{ pessoa.telefone}}</p>
-            <p class="big header">Endereço: {{ pessoa.data_nascimento }}</p>
-            <p class="big header">Endereço: {{ pessoa.email }}</p>
-            <p class="big header">Endereço: {{ pessoa.endereco }}</p>
-            <a class="blue button" href="/update/{{ pessoa.id }}">Editar</a>
-            <a class="red button" href="/delete/{{ pessoa.id }}">Deletar</a>
+        <div class="container">
+                <p class="shadow-none p-2 mb-2 bg-light rounded">Nome: {{ pessoa.nome }}</p>
+                <p class="col py-0 px-md-3">Telefone: {{ pessoa.telefone}}</p>
+                <p class="col py-0 px-md-3">E-mail: {{ pessoa.email }}</p>
+                <p class="col py-0 px-md-3">Endereço: {{ pessoa.endereco }}</p>
+            <div class=" btn pull-right p-1">
+                <a class="btn btn-primary py-0 px-md-3" href="/editar/{{ pessoa.id }}">Editar</a>
+                <a class="btn btn-danger py-0 px-md-3" href="/delete/{{ pessoa.id }}">Deletar</a>
+            </div>
         </div>
         {% endfor %}
 
-    <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="form-validation.js"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 
   </body>
   <footer class="fixed-bottom text-center text-small">

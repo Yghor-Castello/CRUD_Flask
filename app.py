@@ -1,62 +1,61 @@
 from flask import Flask, render_template, request, redirect, url_for
-from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
 
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder='templates')
 
-# /// = relative path, //// = absolute path
-
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'
+# adding configuration for using a sqlite database
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///pessoa.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+# Creating an SQLAlchemy instance
 db = SQLAlchemy(app)
+
+# Settings for migrations
 migrate = Migrate(app, db)
 
-
 class Pessoa(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     nome = db.Column(db.String, nullable=False)
     telefone = db.Column(db.String, nullable=False)
-    data_nascimento = db.Column(db.Date, nullable=False)
     email = db.Column(db.String, nullable=False, unique=True)
     endereco = db.Column(db.String, nullable=False)
 
-    def __init__(self, nome, telefone, data_nascimento, email, endereco):
+    def __init__(self, nome, telefone, email, endereco):
         self.nome = nome
         self.telefone = telefone
-        self.data_nascimento = data_nascimento
         self.email = email
         self.endereco = endereco
 
 @app.route("/")
 def home():
     pessoa = Pessoa.query.all()
-    return render_template("base.html", pessoa=pessoa)
+    return render_template("home.html", pessoa=pessoa)
 
 #CREATE - CADASTRAR CLIENTE
 @app.route("/add", methods=["GET", "POST"])
-def create():
+def add():
     if request.method == "POST":
-        nova_pessoa = Pessoa(request.form['nome'], request.form['telefone'], request.form['data_nascimento'], request.form['email'], request.form['endereco'])
-        db.session.add(nova_pessoa)
+        add_pessoa = Pessoa(request.form['nome'], request.form['telefone'], request.form['email'], request.form['endereco'])
+        db.session.add(add_pessoa)
         db.session.commit()
         return redirect(url_for('home'))
-    return render_template("adicionar.html")
+    return render_template("add.html")
 
 #READ - VISUALIZAR CLIENTE
 @app.route("/visualizar")
-def read():
+def visualizar():
     pessoa = Pessoa.query.all()
     return render_template("visualizar.html", pessoa=pessoa)
 
 #UPDATE - ATUALIZAR CLIENTE
-@app.route("/update/<int:pessoa_id>", methods=["GET", "POST"])
-def update(pessoa_id):
+@app.route("/editar/<int:pessoa_id>", methods=["GET", "POST"])
+def editar(pessoa_id):
     pessoa = Pessoa.query.get(pessoa_id)
     if request.method == "POST":
         pessoa.nome = request.form['nome']
         pessoa.telefone = request.form['telefone']
-        pessoa.data_nascimento = request.form['data_nascimento']
         pessoa.email = request.form['email']
         pessoa.endereco = request.form['endereco']
         db.session.commit()
